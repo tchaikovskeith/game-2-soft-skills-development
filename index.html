@@ -1,493 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#1b2a1b" />
-<title>Game 2 · Soft Skills Development | 3 Years In, 3 Years Forward</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,700;1,500;1,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#122016">
+<title>Game 2 · Soft Skills Development | Three Years In, Three Years Forward</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#1b2a1b;--gold:#e3a93f;--gold2:#f3d27a;--cream:#f6eedb;--ink:#24402f;--soft:#5d7466;--muted:#a9b9a0;--line:rgba(227,169,63,.38);--serif:"Lora",Georgia,serif;--sans:"Poppins",system-ui,sans-serif;font-family:var(--sans);color:var(--cream);background:var(--bg);color-scheme:dark}
+:root{--bg:#122016;--panel:rgba(9,20,13,.72);--gold:#d9a441;--gold2:#f3d27a;--cream:#f6eedb;--muted:#b4c2ac;--line:rgba(217,164,65,.4);--serif:"Cormorant Garamond",Georgia,serif;--sans:Inter,system-ui,sans-serif;color-scheme:dark}
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%}
-body{background:radial-gradient(ellipse at 50% 0,#2b4029 0,transparent 55%),radial-gradient(ellipse at 50% 100%,#283d27 0,transparent 50%),var(--bg);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);overflow-x:hidden}
-button,select,input{font:inherit}
-button{cursor:pointer}
-button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--gold2);outline-offset:3px}
+body{font:14px/1.55 var(--sans);color:var(--cream);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='170'%3E%3Cg fill='%23d9a441' fill-opacity='.08' font-family='monospace' font-size='15' letter-spacing='6'%3E%3Ctext x='8' y='30'%3E0 1 0 0 1 0%3C/text%3E%3Ctext x='120' y='100'%3E1 1 0 1 0%3C/text%3E%3Ctext x='30' y='150'%3E0 1 1 0 1%3C/text%3E%3C/g%3E%3C/svg%3E"),radial-gradient(ellipse at 50% 0,#264229,transparent 60%),var(--bg);padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0);overflow-x:hidden}
+button,select,input{font:inherit}button{cursor:pointer}
+:focus-visible{outline:3px solid var(--gold2);outline-offset:3px}
 [hidden]{display:none!important}
-.fly{position:fixed;width:5px;height:5px;border-radius:50%;background:var(--gold2);box-shadow:0 0 10px 4px rgba(243,210,122,.55);opacity:.7;pointer-events:none;animation:drift 9s ease-in-out infinite;z-index:0}
-.fly:nth-child(1){left:4%;top:30%}.fly:nth-child(2){left:93%;top:18%;animation-delay:-3s}.fly:nth-child(3){left:8%;top:78%;animation-delay:-5s}.fly:nth-child(4){left:90%;top:70%;animation-delay:-7s}.fly:nth-child(5){left:50%;top:6%;animation-delay:-2s}
-@keyframes drift{0%,100%{transform:translate(0,0);opacity:.35}50%{transform:translate(14px,-22px);opacity:.9}}
-.shell{position:relative;z-index:1;max-width:1370px;margin:0 auto;padding:22px 20px 34px}
-.brandbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
-.brand{display:flex;align-items:center;gap:12px;font:italic 700 20px var(--serif);color:var(--gold)}
-.brand .stamp{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;font-size:19px;background:rgba(227,169,63,.08)}
-.top-tag{border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--gold)}
-.columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:stretch}
-.pane{min-width:0;border:1px solid var(--line);border-radius:26px;background:rgba(10,20,10,.28);overflow:hidden}
-.story-pane{padding:28px;display:flex;flex-direction:column;gap:20px}
-.eyebrow,.card-title{text-transform:uppercase;letter-spacing:.28em;font-size:10.5px;font-weight:600;color:var(--gold)}
-.card-title{color:var(--soft);margin-bottom:9px}
-h1{font:italic 700 clamp(34px,4.2vw,50px)/1.1 var(--serif);margin:8px 0 12px;background:linear-gradient(180deg,#f3c35c,#d4912c);-webkit-background-clip:text;background-clip:text;color:transparent}
-.intro{margin:0;line-height:1.7;font-size:13.5px;color:var(--muted);max-width:520px}
-.art{height:265px;flex:0 0 265px;position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 55%,#46602f 0,#2a4128 40%,#172416 100%)}
-.art::before{content:"";position:absolute;width:330px;height:330px;border:1px dashed rgba(227,169,63,.22);border-radius:50%;left:50%;top:48%;transform:translate(-50%,-50%)}
-.art::after{content:"";position:absolute;width:215px;height:215px;border:1px solid rgba(227,169,63,.14);border-radius:50%;left:50%;top:48%;transform:translate(-50%,-50%)}
-.art-center{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);z-index:1;background:radial-gradient(circle,#24391f,#14210f);border-radius:50%;width:120px;height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--line);box-shadow:0 0 30px rgba(227,169,63,.12)}
-.art-center .big{font-size:36px;line-height:1.05}
-.art-center .small{font-size:9.5px;text-transform:uppercase;letter-spacing:.18em;color:var(--gold);font-weight:600;margin-top:5px}
-.orbit{--c:#e3a93f;width:62px;height:62px;position:absolute;z-index:2;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.14);background:radial-gradient(circle,rgba(255,255,255,.08),rgba(0,0,0,.35));font-size:26px;transform:translate(-50%,-50%);opacity:.5;filter:grayscale(.7);transition:all .45s}
-.orbit.one{left:21%;top:26%;--c:#f1c453}.orbit.two{left:77%;top:20%;--c:#e0568f}.orbit.three{left:84%;top:72%;--c:#4fb06a}.orbit.four{left:49%;top:91%;--c:#4aa3e0}.orbit.five{left:16%;top:76%;--c:#9a6fe0}
-.orbit.unlocked{opacity:1;filter:none;border-color:var(--c);background:radial-gradient(circle,color-mix(in srgb,var(--c) 45%,#111),#101a10);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 30%,transparent),0 0 34px 8px color-mix(in srgb,var(--c) 55%,transparent);transform:translate(-50%,-50%) scale(1.1)}
-.art .caption{position:absolute;right:12px;bottom:10px;font-size:10px;font-weight:500;color:var(--gold2);z-index:3;background:rgba(10,20,10,.6);border:1px solid var(--line);border-radius:10px;padding:5px 10px}
-.scenario-card{background:var(--cream);color:var(--ink);border-radius:20px;padding:22px}
-.scenario-text{font:italic 600 clamp(18px,2.1vw,25px)/1.45 var(--serif);margin:0}
-.scene-support{margin:10px 0 0;color:var(--soft);font-size:12.5px;line-height:1.65}
-.progress-section{margin-top:auto;display:grid;gap:10px}
-.progress-head{display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--gold);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
-.progress-track{height:10px;overflow:hidden;border-radius:99px;background:rgba(255,255,255,.1)}
-.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#f3d27a,#d4912c);border-radius:99px;transition:width .4s}
-.skill-dots{display:flex;gap:8px;flex-wrap:wrap}
-.skill-dot{height:30px;min-width:30px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;font-size:13px;opacity:.4;filter:grayscale(.8);transition:all .35s}
-.skill-dot.done{filter:none;opacity:1;transform:scale(1.08);background:rgba(227,169,63,.18);border-color:var(--gold)}
-.game-pane{padding:21px;display:flex;flex-direction:column;gap:16px}
-.timer-bar{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:11px}
-.timer{border-radius:20px;background:rgba(10,20,10,.5);border:1px solid var(--line);padding:14px 16px;text-align:center}
-.timer .overline,.playercard .overline{display:block;color:var(--muted);letter-spacing:.22em;font-size:10px;text-transform:uppercase;font-weight:600;margin-bottom:6px}
-.clock{font:700 clamp(38px,4.6vw,56px)/1 var(--serif);letter-spacing:.04em;color:var(--gold2)}
-.timer.warning .clock{color:#f0a63a}
-.timer.critical{border-color:#e0705a;background:rgba(120,30,20,.3)}
-.timer.critical .clock{color:#ff8e7a}
-.playercard{border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:15px;display:flex;flex-direction:column;justify-content:center;min-width:0}
-.playercard .person{font-weight:600;font-size:13.5px;color:var(--cream);line-height:1.55;overflow-wrap:anywhere}
-.playcard{border:1px solid var(--line);border-radius:22px;padding:23px;background:var(--cream);color:var(--ink)}
-.playcard .eyebrow{color:#9a6a17}
-.playcard h2{font:italic 700 30px/1.15 var(--serif);margin:4px 0 12px;color:#1f3a2a}
-.playcard p{color:var(--soft);font-size:13px;line-height:1.7;margin:0 0 14px}
-.field{display:grid;gap:7px;margin-bottom:15px}
-.field label{text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;color:#7b5a1c;font-weight:600}
-.field input,.field select{width:100%;border:1.5px solid #d8cba7;border-radius:13px;min-height:47px;background:#fffaf0;color:var(--ink);padding:11px 13px}
-.field input:focus,.field select:focus{border-color:var(--gold)}
-.primary,.secondary{display:inline-flex;justify-content:center;align-items:center;gap:7px;min-height:47px;border-radius:999px;padding:12px 22px;font-weight:700;font-size:13.5px;border:0;transition:transform .15s,filter .15s}
-.primary{background:linear-gradient(180deg,#f0bd55,#d4912c);color:#2a1d05;box-shadow:0 8px 20px rgba(212,145,44,.3)}
-.primary:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.06)}
-.primary:disabled{background:#cfc4a4;color:#8d8366;box-shadow:none;cursor:not-allowed}
-.secondary{background:transparent;color:#7b5a1c;border:1px solid #c9a24f}
-.secondary:hover:not(:disabled){background:rgba(227,169,63,.14)}
+.corner{position:fixed;width:min(27vw,350px);aspect-ratio:1;z-index:0;pointer-events:none}
+.c1{left:0;top:0}.c2{right:0;top:0;transform:scaleX(-1)}.c3{left:0;bottom:0;transform:scaleY(-1)}.c4{right:0;bottom:0;transform:scale(-1)}
+.shell{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:18px 16px 30px}
+.pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:16px}
+.pill{border:1px solid var(--line);background:rgba(9,20,13,.78);color:var(--cream);border-radius:999px;padding:9px 16px;font-weight:600;font-size:12.5px}
+.pill[aria-pressed=true]{border-color:var(--gold);background:rgba(217,164,65,.18)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pane{min-width:0;border:1px solid var(--line);border-radius:26px;background:var(--panel);padding:24px;display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--gold)}
+h1{font:italic 700 clamp(38px,5vw,54px)/1.05 var(--serif);margin:4px 0 10px;color:var(--cream)}
+h2{font:italic 700 32px/1.1 var(--serif);margin:2px 0 8px;color:var(--cream)}
+p{margin:0}.muted{color:var(--muted);font-size:13.5px}
+.garden{border:1px solid var(--line);border-radius:20px;overflow:hidden;line-height:0}.garden svg{width:100%;height:auto}
+.scene{border:1px solid var(--line);border-radius:20px;padding:20px;background:rgba(0,0,0,.25)}
+.scene .tag{font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+.scenario-text{font:italic 600 clamp(21px,2.4vw,27px)/1.35 var(--serif)}
+.scene-support{margin-top:10px;color:var(--muted);font-size:12.5px}
+.prog{margin-top:auto;display:grid;gap:8px}
+.prog-head{display:flex;justify-content:space-between;color:var(--gold);font-size:11.5px;font-weight:600}
+.track{height:9px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold2),var(--gold));transition:width .4s}
+.timer-bar{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.box{border:1px solid var(--line);border-radius:18px;padding:14px 16px;background:rgba(255,255,255,.04)}
+.box .ov{display:block;font-size:10.5px;font-weight:700;letter-spacing:.2em;color:var(--gold);margin-bottom:6px}
+.timer{text-align:center;border-width:2px}
+.clock{font:700 clamp(40px,5vw,56px)/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.06em;color:var(--gold2)}
+.timer.warning .clock{color:#f0a63a}.timer.critical{border-color:#e0705a;background:rgba(120,30,20,.3)}.timer.critical .clock{color:#ff8e7a}
+.person{font-weight:600;overflow-wrap:anywhere}
+.card{border:1px solid var(--line);border-radius:22px;padding:22px;background:rgba(0,0,0,.28)}
+.card .eyebrow{margin-bottom:2px}
+.field{display:grid;gap:6px;margin:14px 0}
+.field label{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--gold)}
+.field input,.field select{width:100%;min-height:48px;border:1.5px solid var(--line);border-radius:13px;background:rgba(255,255,255,.06);color:var(--cream);padding:10px 13px}
+.field select option{background:#14301f;color:var(--cream)}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:7px;min-height:46px;border-radius:999px;padding:11px 22px;font-weight:700;border:0;background:linear-gradient(180deg,#f0bd55,#d4912c);color:#2a1d05;transition:transform .15s}
+.btn:hover:not(:disabled){transform:translateY(-1px)}
+.btn:disabled{background:rgba(255,255,255,.1);color:#7f8f7a;cursor:not-allowed}
+.btn.alt{background:transparent;color:var(--gold2);border:1px solid var(--gold)}
 .full{width:100%}
-.mini-rule{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink);font-size:12px;margin:2px 0 12px}
-.step{border-radius:50%;height:25px;width:25px;background:var(--ink);display:grid;place-items:center;font-size:11px;color:var(--gold2)}
-.scramble-list{display:grid;grid-template-columns:1fr;gap:8px;margin:0 0 19px}
-.scramble-option{width:100%;display:grid;grid-template-columns:32px minmax(0,1fr) 19px;gap:10px;align-items:center;text-align:left;background:#fffaf0;border:1.5px solid #e0d4b3;border-radius:13px;min-height:47px;padding:9px 12px;color:var(--ink)}
-.scramble-option .n{font-size:11px;font-weight:700;background:#efe3c3;height:27px;width:27px;border-radius:50%;display:grid;place-items:center;color:#7b5a1c}
-.scramble-option .letters{font:600 clamp(11px,1.2vw,14px)/1.25 var(--sans);letter-spacing:.18em;overflow-wrap:anywhere}
-.scramble-option .radio{height:17px;width:17px;border-radius:50%;border:2px solid #cdbd90}
-.scramble-option:hover:not(:disabled){background:#fbf0d2;border-color:var(--gold)}
-.scramble-option[aria-pressed="true"]{border-color:#b9791c;background:#fbeecb;box-shadow:inset 0 0 0 1px #b9791c}
-.scramble-option[aria-pressed="true"] .radio{border:5px solid #b9791c}
-.puzzle-area{padding:16px 13px;background:#1f3322;border:1px solid var(--line);border-radius:17px}
-.puzzle-area .puzzle-help{color:var(--muted);font-size:12px;line-height:1.55;margin:4px 0 12px}
-.answer-slots,.letter-bank{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;min-height:46px;align-items:center}
-.answer-slots{padding:10px 6px;border-radius:13px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.08);margin-bottom:13px;color:var(--muted);font-size:12px}
-.tile{width:30px;height:38px;min-width:30px;border-radius:8px;display:grid;place-items:center;font:700 16px/1 var(--sans);text-transform:uppercase}
-.tile.answer{background:linear-gradient(180deg,#f3d27a,#e0a23a);color:#2a1d05;border:0}
-.tile.answer:disabled{cursor:default}
-.slot-empty{height:38px;width:30px;border:1.4px dashed rgba(227,169,63,.45);border-radius:8px}
-.tile.bank{background:var(--cream);color:var(--ink);border:0;box-shadow:0 3px 0 #bfae80;cursor:pointer}
-.tile.bank:hover:not(:disabled){transform:translateY(-2px)}
-.tile.bank:disabled{visibility:hidden}
-.tile-tools{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:11px}
-.tiny{border:1px solid var(--line);color:var(--gold2);background:transparent;border-radius:999px;min-height:36px;padding:7px 14px;font-size:11px;font-weight:600}
-.tiny:disabled{opacity:.4;cursor:not-allowed}
-.nextline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px}
-.hint{font-size:12px;color:var(--soft);font-weight:500}
-.feedback{border-radius:16px;border:1px solid #9cc79f;background:#e6f1dc;padding:16px;margin-top:15px}
-.feedback.wrong{border-color:#e0b45c;background:#fbeecb}
-.feedback h3{margin:0 0 7px;font-size:15px;color:#1f6a44}
-.feedback.wrong h3{color:#8b5a12}
-.feedback p{margin:0 0 9px;font-size:13px;color:var(--soft);line-height:1.6}
-.answer-pill{display:inline-block;border-radius:99px;padding:6px 13px;background:var(--ink);color:var(--gold2);font-weight:600;font-size:12px;margin-bottom:10px}
-.final-score{font:700 56px/1.1 var(--serif);color:#b9791c;margin:17px 0 8px}
-.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:18px 0}
-.stat{text-align:left;border:1px solid #e0d4b3;border-radius:14px;padding:12px;background:#fffaf0;min-width:0}
-.stat small{display:block;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#9a8660;margin-bottom:7px}
-.stat strong{font-size:13px;line-height:1.4;color:var(--ink);overflow-wrap:anywhere}
-.buttons{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}
-.footnote{font-size:11px;color:var(--muted);line-height:1.6;margin-top:auto;padding:2px 8px}
-.sitefoot{text-align:center;margin-top:30px}
-.sitefoot .tag{font:500 clamp(20px,3vw,30px)/1.2 var(--serif);color:var(--gold);margin:0 0 8px}
-.sitefoot .office{font-size:11px;color:#7c8c76}
-.tags{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.music{border:1px solid var(--line);background:transparent;color:var(--gold);border-radius:999px;padding:9px 16px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
-.music[aria-pressed="true"]{background:rgba(227,169,63,.16);border-color:var(--gold)}
-@media(max-width:1030px){.columns{grid-template-columns:1fr}.story-pane,.game-pane{padding:20px}.art{height:230px;flex-basis:230px}}
-@media(max-width:600px){.shell{padding:13px 10px 28px}.pane{border-radius:19px}.story-pane,.game-pane{padding:16px}.art{height:205px;flex-basis:205px}.art-center{width:96px;height:96px}.art-center .big{font-size:28px}.orbit{width:50px;height:50px;font-size:21px}.scenario-card,.playcard{padding:17px}.clock{font-size:37px}.scramble-option .letters{font-size:11px;letter-spacing:.1em}.tile{width:25px;height:35px;min-width:25px;font-size:14px}.slot-empty{width:25px;height:35px}.art::before{width:260px;height:260px}.art::after{width:170px;height:170px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+.rule{display:flex;align-items:center;gap:10px;font-weight:600;font-size:13px;margin:14px 0 10px}
+.step{height:24px;width:24px;border-radius:50%;background:var(--gold);color:#2a1d05;display:grid;place-items:center;font-size:11px;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{display:grid;grid-template-columns:30px 1fr 18px;gap:10px;align-items:center;text-align:left;min-height:46px;padding:8px 12px;border:1.5px solid rgba(255,255,255,.14);border-radius:13px;background:rgba(255,255,255,.05);color:var(--cream)}
+.opt .n{height:26px;width:26px;border-radius:50%;background:rgba(217,164,65,.2);color:var(--gold2);font-size:11px;font-weight:700;display:grid;place-items:center}
+.opt .l{font-weight:600;letter-spacing:.16em;font-size:clamp(11px,1.3vw,14px);overflow-wrap:anywhere}
+.opt .r{height:17px;width:17px;border-radius:50%;border:2px solid #6f8a6b}
+.opt:hover:not(:disabled){border-color:var(--gold)}
+.opt[aria-pressed=true]{border-color:var(--gold);background:rgba(217,164,65,.16)}.opt[aria-pressed=true] .r{border:5px solid var(--gold)}
+.puzzle{padding:14px;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:17px}
+.slots,.bank{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;min-height:46px;align-items:center}
+.slots{padding:9px 6px;border-radius:13px;background:rgba(0,0,0,.3);margin:10px 0;color:var(--muted);font-size:12px}
+.tile{width:30px;height:38px;border-radius:8px;display:grid;place-items:center;font:700 16px var(--sans);border:0}
+.tile.a{background:linear-gradient(180deg,var(--gold2),#e0a23a);color:#2a1d05}
+.tile.b{background:var(--cream);color:#24402f;box-shadow:0 3px 0 #bfae80}.tile.b:disabled{visibility:hidden}
+.empty{height:38px;width:30px;border:1.4px dashed rgba(217,164,65,.5);border-radius:8px}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tiny{border:1px solid var(--line);color:var(--gold2);background:transparent;border-radius:999px;min-height:36px;padding:6px 14px;font-size:11.5px;font-weight:600}.tiny:disabled{opacity:.4;cursor:not-allowed}
+.nextline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px}
+.hint{font-size:12px;color:var(--muted)}
+.feedback{border-radius:16px;border:1px solid #6fae78;background:rgba(79,176,106,.14);padding:16px;margin-top:14px}
+.feedback.wrong{border-color:#e0b45c;background:rgba(224,180,92,.14)}
+.feedback h3{margin:0 0 8px;font-size:15px;color:#9fe0ad}.feedback.wrong h3{color:var(--gold2)}
+.feedback p{margin:8px 0 12px;font-size:13px;color:var(--muted)}
+.pillans{display:inline-block;border-radius:99px;padding:5px 13px;background:var(--gold);color:#2a1d05;font-weight:700;font-size:12px}
+.score{font:700 64px/1.1 var(--serif);color:var(--gold2);margin:12px 0 6px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:16px 0}
+.stat{border:1px solid var(--line);border-radius:14px;padding:12px;background:rgba(255,255,255,.04);min-width:0}
+.stat small{display:block;font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--gold);margin-bottom:5px}
+.stat strong{overflow-wrap:anywhere}
+.row{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+.small{font-size:11.5px;color:var(--muted);margin-top:12px}
+.foot{text-align:center;margin-top:28px}
+.foot .t{font:600 clamp(26px,3.6vw,40px)/1.2 var(--serif);color:var(--gold)}.foot .o{font-size:12px;color:#8a9b84;margin-top:4px}
+@media(max-width:900px){.cols{grid-template-columns:1fr}}
+@media(max-width:560px){.pane{padding:16px;border-radius:20px}.timer-bar{grid-template-columns:1fr}.tile{width:25px;height:34px;font-size:14px}.empty{width:25px;height:34px}}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
 </style>
 </head>
 <body>
-<i class="fly"></i><i class="fly"></i><i class="fly"></i><i class="fly"></i><i class="fly"></i>
 <main class="shell">
-  <header class="brandbar">
-    <div class="brand"><span class="stamp" aria-hidden="true">🦋</span> Three Years In, Three Years Forward</div>
-    <div class="tags"><button type="button" class="music" id="music" aria-pressed="false">🎵 Music off</button><span class="top-tag">GAME 02 &nbsp;•&nbsp; SOFT SKILLS DEVELOPMENT</span></div>
-  </header>
-  <div class="columns">
-    <section class="pane story-pane" aria-label="Game scenario and skills map">
-      <div>
-        <div class="eyebrow">Five human strengths · one digital future</div>
-        <h1>The Soft Skills Studio</h1>
-        <p class="intro">Read a real-world challenge, find the matching soft skill among five scrambled choices, and put its letters back in order. Each solved skill lights up the studio.</p>
-      </div>
-      <div class="art" aria-label="Five illustrated skill tokens around the soft skills studio">
-        <span class="orbit one" id="token-communication" aria-label="Communication">💬</span>
-        <span class="orbit two" id="token-empathy" aria-label="Empathy">💗</span>
-        <span class="orbit three" id="token-collaboration" aria-label="Collaboration">🤝</span>
-        <span class="orbit four" id="token-adaptability" aria-label="Adaptability">🔄</span>
-        <span class="orbit five" id="token-problem-solving" aria-label="Problem-solving">🧩</span>
-        <div class="art-center"><span class="big">🌱</span><span class="small">Grow together</span></div>
-        <span class="caption">Every correct answer unlocks a skill</span>
-      </div>
-      <section class="scenario-card" aria-live="polite" aria-label="Current scenario">
-        <div class="card-title" id="scenario-tag">Your learning challenge</div>
-        <p class="scenario-text" id="scenario-text">Five skills. Five workplace scenarios. Are you ready to begin?</p>
-        <p class="scene-support" id="scenario-support">Choose the soft skill that fits each situation, then unscramble its letters.</p>
-      </section>
-      <div class="progress-section">
-        <div class="progress-head"><span id="progress-label">0 of 5 challenges completed</span><span id="score-label">0 skills unlocked</span></div>
-        <div class="progress-track" role="progressbar" aria-label="Completed challenges" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" id="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
-        <div class="skill-dots" id="skill-dots" aria-label="Unlocked skills"></div>
-      </div>
+  <div class="pills"><span class="pill" id="pp">👤 Waiting for player details</span><span class="pill" id="pb">🌸 Five skills to bloom</span><button type="button" class="pill" id="music" aria-pressed="false">🎵 Music off</button></div>
+  <div class="cols">
+    <section class="pane" aria-label="Scenario and garden">
+      <div><div class="eyebrow">GAME 02 · SOFT SKILLS DEVELOPMENT</div><h1>Grow Your Soft Skills Garden</h1>
+      <p class="muted">Read a real-world challenge, find the matching soft skill among five scrambled choices, and put its letters back in order. Each correct answer makes a flower bloom and a butterfly land.</p></div>
+      <div class="garden" id="garden" role="img" aria-label="Garden with five flowers, one per soft skill"></div>
+      <div class="scene" aria-live="polite"><div class="tag" id="stag">YOUR LEARNING CHALLENGE</div><p class="scenario-text" id="stext">Five skills. Five workplace scenarios. Are you ready to begin?</p><p class="scene-support" id="ssup">Choose the soft skill that fits each situation, then unscramble its letters.</p></div>
+      <div class="prog"><div class="prog-head"><span id="plabel">0 of 5 challenges completed</span><span id="slabel">0 skills unlocked</span></div><div class="track" role="progressbar" aria-label="Completed challenges" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" id="ptrack"><div class="fill" id="pfill"></div></div></div>
     </section>
-    <aside class="pane game-pane" aria-label="Game controls">
+    <aside class="pane" aria-label="Game controls">
       <div class="timer-bar">
-        <div class="timer" id="timer-box" role="timer" aria-label="Time remaining"><span class="overline">Time remaining</span><div class="clock" id="clock">05:00</div></div>
-        <div class="playercard"><span class="overline">Player</span><div class="person" id="player-caption">Enter your name and CU to begin.</div></div>
+        <div class="box timer" id="tbox" role="timer" aria-label="Time remaining"><span class="ov">TIMER</span><div class="clock" id="clock">05:00</div></div>
+        <div class="box"><span class="ov">PLAYER</span><div class="person" id="pcap">Enter your name and CU to begin.</div></div>
       </div>
-      <section class="playcard" id="welcome-screen" aria-labelledby="welcome-title">
-        <div class="eyebrow">Before we begin</div>
-        <h2 id="welcome-title">Ready to grow your skills?</h2>
-        <p>There are five rounds. Each round has a scenario, five jumbled soft-skill choices, and a word puzzle. Your <strong>5-minute timer</strong> starts when you click <strong>Ready</strong>.</p>
-        <div class="field"><label for="player-name">Player name</label><input type="text" id="player-name" maxlength="80" autocomplete="name" placeholder="Enter your full name" required></div>
-        <div class="field"><label for="player-cu">Constituent unit (CU)</label>
-          <select id="player-cu" required>
-            <option value="">Select your CU</option>
-            <option value="🌲 UP Baguio">🌲 UP Baguio</option>
-            <option value="⚔️ UP Cebu">⚔️ UP Cebu</option>
-            <option value="🌻 UP Diliman">🌻 UP Diliman</option>
-            <option value="⛰️ UP Los Baños">⛰️ UP Los Baños</option>
-            <option value="🏛️ UP Manila">🏛️ UP Manila</option>
-            <option value="🪶 UP Mindanao">🪶 UP Mindanao</option>
-            <option value="💻 UP Open University">💻 UP Open University</option>
-            <option value="💉 UP Philippine General Hospital">💉 UP Philippine General Hospital</option>
-            <option value="🌊 UP Tacloban">🌊 UP Tacloban</option>
-            <option value="🐟 UP Visayas">🐟 UP Visayas</option>
-          </select>
-        </div>
-        <button class="primary full" type="button" id="ready" disabled>I’m Ready — Start the 5:00 timer <span aria-hidden="true">→</span></button>
-        <p style="font-size:11px;margin:12px 0 0">Your name and CU are used only in the game and downloadable JPG; they are not uploaded to a server.</p>
+      <section class="card" id="welcome">
+        <h2>Ready to play?</h2>
+        <p class="muted">Before the timer begins, enter your name and choose your constituent unit (CU). The 5-minute countdown starts only after you click <strong>Ready</strong>.</p>
+        <div class="field"><label for="pname">NAME</label><input id="pname" maxlength="80" autocomplete="name" placeholder="Enter your full name"></div>
+        <div class="field"><label for="pcu">CONSTITUENT UNIT (CU)</label><select id="pcu"><option value="">Select your CU</option>
+          <option>🎓 UP System</option><option>🌲 UP Baguio</option><option>⚔️ UP Cebu</option><option>🌻 UP Diliman</option><option>⛰️ UP Los Baños</option><option>🏛️ UP Manila</option><option>🪶 UP Mindanao</option><option>💻 UP Open University</option><option>💉 UP Philippine General Hospital</option><option>🌊 UP Tacloban</option><option>🐟 UP Visayas</option></select></div>
+        <button class="btn" type="button" id="ready" disabled>I’m Ready ▶</button>
+        <p class="small">Your name and CU are used only in the game and the downloadable PNG; nothing is uploaded to a server.</p>
       </section>
-      <section class="playcard" id="game-screen" hidden aria-label="Word scramble game">
-        <div class="eyebrow" id="round-badge">Round 1 of 5</div>
-        <h2>Find it. Unscramble it.</h2>
-        <div class="mini-rule"><span class="step">1</span> Pick the jumbled skill that fits the scenario</div>
-        <div class="scramble-list" id="options" role="group" aria-label="Choose a scrambled soft skill"></div>
-        <div class="mini-rule"><span class="step">2</span> Tap letters to put the chosen skill in order</div>
-        <section class="puzzle-area" id="puzzle-area" aria-label="Unscramble selected skill">
-          <p class="puzzle-help" id="puzzle-help">Choose one of the scrambled skill cards above to reveal its letter tiles.</p>
-          <div class="answer-slots" id="answer" aria-label="Your arranged answer"></div>
-          <div class="letter-bank" id="bank" aria-label="Jumbled letter tiles"></div>
-          <div class="tile-tools">
-            <button type="button" class="tiny" id="undo" disabled>Undo letter ↶</button>
-            <button type="button" class="tiny" id="clear" disabled>Clear letters</button>
-            <button type="button" class="tiny" id="shuffle" disabled>Shuffle tiles ↻</button>
-          </div>
-        </section>
-        <div class="nextline" id="submit-row"><span class="hint" id="hint">Select a scrambled skill to begin.</span><button type="button" class="primary" id="submit" disabled>Check my answer</button></div>
-        <div class="feedback" id="feedback" hidden role="status" aria-live="polite">
-          <h3 id="feedback-title"></h3><span class="answer-pill" id="correct-answer"></span><p id="lesson"></p>
-          <button type="button" class="primary full" id="next">Next challenge →</button>
-        </div>
+      <section class="card" id="game" hidden aria-label="Word scramble game">
+        <div class="eyebrow" id="rbadge">ROUND 1 OF 5</div><h2>Find it. Unscramble it.</h2>
+        <div class="rule"><span class="step">1</span>Pick the jumbled skill that fits the scenario</div>
+        <div class="opts" id="opts" role="group" aria-label="Choose a scrambled soft skill"></div>
+        <div class="rule"><span class="step">2</span>Tap letters to put the chosen skill in order</div>
+        <div class="puzzle"><p class="hint" id="phelp"></p><div class="slots" id="slots" aria-label="Your arranged answer"></div><div class="bank" id="bank" aria-label="Jumbled letter tiles"></div>
+          <div class="tools"><button type="button" class="tiny" id="undo" disabled>Undo ↶</button><button type="button" class="tiny" id="clear" disabled>Clear</button><button type="button" class="tiny" id="shuffle" disabled>Shuffle ↻</button></div></div>
+        <div class="nextline" id="srow"><span class="hint" id="hint">Select a scrambled skill to begin.</span><button type="button" class="btn" id="submit" disabled>Check my answer</button></div>
+        <div class="feedback" id="fb" hidden role="status" aria-live="polite"><h3 id="fbt"></h3><span class="pillans" id="fba"></span><p id="lesson"></p><button type="button" class="btn full" id="next">Next challenge →</button></div>
       </section>
-      <section class="playcard" id="result-screen" hidden aria-live="polite">
-        <div class="eyebrow">Your soft skills journey</div>
-        <h2 id="result-title">Well done!</h2>
-        <div class="final-score" id="result-score">0 / 5</div>
-        <p id="result-message">Your soft skills are growing.</p>
-        <div class="stats">
-          <div class="stat"><small>Name</small><strong id="result-name">—</strong></div>
-          <div class="stat"><small>Constituent unit</small><strong id="result-cu">—</strong></div>
-          <div class="stat"><small>Challenges answered</small><strong id="result-rounds">0 / 5</strong></div>
-          <div class="stat"><small>Time remaining</small><strong id="result-time">00:00</strong></div>
-        </div>
-        <div class="buttons"><button class="primary" type="button" id="download">Download score (JPG)</button><button class="secondary" type="button" id="again">Play again ↻</button></div>
-        <p style="font-size:11px;margin:12px 0 0">The scorecard is created in your browser, not uploaded to a server.</p>
+      <section class="card" id="result" hidden aria-live="polite">
+        <div class="eyebrow">YOUR SOFT SKILLS JOURNEY</div><h2 id="rtitle">Well done!</h2><div class="score" id="rscore">0 / 5</div><p class="muted" id="rmsg"></p>
+        <div class="stats"><div class="stat"><small>NAME</small><strong id="rname">—</strong></div><div class="stat"><small>CONSTITUENT UNIT</small><strong id="rcu">—</strong></div><div class="stat"><small>CHALLENGES ANSWERED</small><strong id="rrounds">0 / 5</strong></div><div class="stat"><small>TIME REMAINING</small><strong id="rtime">00:00</strong></div></div>
+        <div class="row"><button class="btn" type="button" id="download">Download score (PNG)</button><button class="btn alt" type="button" id="again">Play again ↻</button></div>
+        <p class="small">The scorecard is created in your browser, not uploaded to a server.</p>
       </section>
-      <div class="footnote">Game 2 · Five original training scenarios. Each correct response requires both the appropriate soft skill and a properly rearranged word.</div>
     </aside>
   </div>
-  <footer class="sitefoot">
-    <p class="tag">Three Years In, Three Years Forward</p>
-    <div class="office">Office of the Vice President for Digital Transformation, University of the Philippines</div>
-  </footer>
+  <footer class="foot"><div class="t">Three Years In, Three Years Forward</div><div class="o">Office of the Vice President for Digital Transformation, University of the Philippines</div></footer>
 </main>
 <script>
-  'use strict';
-  // Editable game content: one situation per soft skill.
-  const SKILLS = [
-    {id:'communication',name:'Communication',icon:'💬',lesson:'Communication means explaining information clearly, listening actively, and confirming that everyone understands the next step.',scenario:'A new online request process has launched, but staff across several offices are confused about its steps and deadlines. What skill helps everyone understand the process?'},
-    {id:'empathy',name:'Empathy',icon:'💗',lesson:'Empathy means listening to people’s experiences, recognizing different needs, and designing support that works for them.',scenario:'An employee has trouble using an online service because the instructions are difficult to follow. A teammate wants to understand their experience before offering support.'},
-    {id:'collaboration',name:'Collaboration',icon:'🤝',lesson:'Collaboration is working across people and teams, sharing knowledge and roles, and solving a shared challenge together.',scenario:'Two campus offices are developing similar dashboards and duplicating efforts. They decide to combine knowledge and coordinate responsibilities.'},
-    {id:'adaptability',name:'Adaptability',icon:'🔄',lesson:'Adaptability is staying open to change, learning new approaches, and adjusting when conditions or technologies shift.',scenario:'An old platform will be retired next month. A team learns a replacement system and updates its routines despite some uncertainty.'},
-    {id:'problem-solving',name:'Problem-solving',icon:'🧩',lesson:'Problem-solving means identifying the root cause of a challenge, weighing options, testing fixes, and learning from results.',scenario:'A recurring sign-in error prevents users from reaching an online service. The team investigates patterns, tests possible causes, and checks which fix works.'}
-  ];
-  const $ = id => document.getElementById(id);
-  const norm = value => String(value).toUpperCase().replace(/[^A-Z]/g,'');
-  const MAX_SECONDS = 300;
-  let name='',cu='',round=0,answered=0,score=0,selected=null,placed=[],bank=[],roundScrambles=[],unlocked=new Set();
-  let started=false,finished=false,deadline=0,ticker=null,remaining=MAX_SECONDS;
-  function timeString(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
-  function updateClock(){
-    if(started&&!finished){remaining=Math.max(0,Math.ceil((deadline-performance.now())/1000));if(remaining===0){finish(true);return;}}
-    $('clock').textContent=timeString(remaining);
-    $('timer-box').classList.toggle('warning',remaining<=60&&remaining>30);
-    $('timer-box').classList.toggle('critical',remaining<=30);
-  }
-  function shuf(array){
-    const a=[...array];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;
-  }
-  function scrambled(word){
-    const letters=norm(word).split('');let order=shuf(letters);
-    for(let i=0;i<8&&order.join('')===letters.join('');i++) order=shuf(letters);
-    if(order.join('')===letters.join(''))order.reverse();
-    return order.join('');
-  }
-  function updateProgress(){
-    $('progress-label').textContent=answered+' of 5 challenges completed';
-    $('score-label').textContent=score+' skills unlocked';
-    $('progress-fill').style.width=(answered/5*100)+'%';
-    $('progress-track').setAttribute('aria-valuenow',String(answered));
-    $('skill-dots').innerHTML='';
-    SKILLS.forEach((s,i)=>{const token=document.createElement('span');token.className='skill-dot'+(unlocked.has(s.id)?' done':'');token.textContent=s.icon;token.title=s.name+(unlocked.has(s.id)?' — unlocked':' — not yet unlocked');$('skill-dots').appendChild(token);$('token-'+s.id).classList.toggle('unlocked',unlocked.has(s.id));});
-  }
-  function resetArt(){SKILLS.forEach(s=>$('token-'+s.id).classList.remove('unlocked'));}
-  function validate(){ $('ready').disabled=!($('player-name').value.trim()&&$('player-cu').value); }
-  function startGame(){
-    if(!$('player-name').value.trim()||!$('player-cu').value)return;
-    name=$('player-name').value.trim();cu=$('player-cu').value;
-    started=true;finished=false;remaining=MAX_SECONDS;deadline=performance.now()+MAX_SECONDS*1000;
-    $('player-caption').textContent=name+' · '+cu;
-    $('welcome-screen').hidden=true;$('result-screen').hidden=true;$('game-screen').hidden=false;
-    displayRound();updateClock();clearInterval(ticker);ticker=setInterval(updateClock,250);
-  }
-  function displayRound(){
-    if(round>=SKILLS.length){finish(false);return;}
-    selected=null;placed=[];bank=[];
-    $('round-badge').textContent='Round '+(round+1)+' of 5';
-    $('scenario-tag').textContent='Scenario '+(round+1)+' · Which soft skill fits?';
-    $('scenario-text').textContent='“'+SKILLS[round].scenario+'”';
-    $('scenario-support').textContent='Choose a scrambled skill on the right, then put its letters in order before checking your answer.';
-    $('options').innerHTML='';
-    roundScrambles=SKILLS.map(s=>({id:s.id,name:s.name,scramble:scrambled(s.name)}));
-    // Change the position of each option every round; keep the mapping on each card.
-    const options=shuf(roundScrambles);
-    options.forEach((s,i)=>{
-      const btn=document.createElement('button');btn.type='button';btn.className='scramble-option';btn.dataset.id=s.id;btn.setAttribute('aria-pressed','false');
-      const n=document.createElement('span');n.className='n';n.textContent=String(i+1).padStart(2,'0');
-      const letters=document.createElement('span');letters.className='letters';letters.textContent=s.scramble;
-      const radio=document.createElement('span');radio.className='radio';radio.setAttribute('aria-hidden','true');
-      btn.append(n,letters,radio);btn.addEventListener('click',()=>selectSkill(s.id));$('options').appendChild(btn);
-    });
-    $('feedback').hidden=true;$('feedback').classList.remove('wrong');$('submit-row').hidden=false;
-    $('hint').textContent='Select a scrambled skill to begin.';$('submit').disabled=true;
-    $('puzzle-help').textContent='Choose one of the scrambled skill cards above to reveal its letter tiles.';
-    renderTiles();updateProgress();
-  }
-  function selectSkill(id){
-    if(finished||!started||$('feedback').hidden===false)return;
-    selected=SKILLS.find(s=>s.id===id);placed=[];
-    const option=roundScrambles.find(s=>s.id===id);
-    bank=option.scramble.split('').map((letter,index)=>({id:index,letter,used:false}));
-    for(const b of $('options').children)b.setAttribute('aria-pressed',String(b.dataset.id===id));
-    $('puzzle-help').textContent='Tap each letter below to form the selected skill. Tap a placed letter to undo it. A hyphen is added automatically for Problem-solving.';
-    $('hint').textContent='Place all '+bank.length+' letters to check your answer.';
-    renderTiles();
-  }
-  function addTile(id){
-    if(!selected||finished||!started||$('feedback').hidden===false)return;
-    const tile=bank.find(t=>t.id===id);if(!tile||tile.used)return;
-    tile.used=true;placed.push(id);renderTiles();
-  }
-  function removeTile(index){
-    if(!selected||finished||!started||$('feedback').hidden===false)return;
-    const id=placed[index];if(id===undefined)return;
-    const tile=bank.find(t=>t.id===id);if(tile)tile.used=false;
-    placed.splice(index,1);renderTiles();
-  }
-  function undo(){if(placed.length)removeTile(placed.length-1);}
-  function clearTiles(){while(placed.length){const t=bank.find(t=>t.id===placed.pop());if(t)t.used=false;}renderTiles();}
-  function shuffleTiles(){
-    if(!selected||placed.length)return;
-    const letters=shuf(bank.map(t=>t.letter));bank=letters.map((letter,id)=>({id,letter,used:false}));renderTiles();
-  }
-  function renderTiles(){
-    const answer=$('answer'),letters=$('bank');answer.innerHTML='';letters.innerHTML='';
-    const count=selected?norm(selected.name).length:0;
-    if(!selected){answer.textContent='Choose a jumbled skill first';}
-    else {for(let i=0;i<count;i++){
-      if(i<placed.length){const tile=bank.find(t=>t.id===placed[i]);const b=document.createElement('button');b.type='button';b.className='tile answer';b.textContent=tile.letter;b.title='Remove '+tile.letter;b.setAttribute('aria-label','Remove letter '+tile.letter);b.addEventListener('click',()=>removeTile(i));answer.appendChild(b);}
-      else {const empty=document.createElement('span');empty.className='slot-empty';empty.setAttribute('aria-hidden','true');answer.appendChild(empty);}
-    }
-    for(const tile of bank){const b=document.createElement('button');b.type='button';b.className='tile bank';b.textContent=tile.letter;b.disabled=tile.used;b.setAttribute('aria-label','Add letter '+tile.letter);b.addEventListener('click',()=>addTile(tile.id));letters.appendChild(b);}}
-    $('submit').disabled=!selected||placed.length!==count;
-    $('undo').disabled=placed.length===0;
-    $('clear').disabled=placed.length===0;
-    $('shuffle').disabled=!selected||placed.length>0;
-    if(selected)$('hint').textContent=placed.length===count?'All letters placed — check your answer!':placed.length+' / '+count+' letters arranged';
-  }
-  function checkAnswer(){
-    if(!started||finished||!selected||placed.length!==bank.length)return;
-    const formed=placed.map(id=>bank.find(t=>t.id===id).letter).join('');
-    const correctlyUnscrambled=formed===norm(selected.name);
-    const correctlySelected=selected.id===SKILLS[round].id;
-    const isRight=correctlyUnscrambled&&correctlySelected;
-    answered++;
-    if(isRight){score++;unlocked.add(selected.id);}
-    $('feedback').hidden=false;$('feedback').classList.toggle('wrong',!isRight);
-    $('feedback-title').textContent=isRight?'✓ Correct! You unlocked a soft skill.':'↗ Not quite — here is the best match.';
-    $('correct-answer').textContent=SKILLS[round].name;
-    const reason=correctlyUnscrambled&&!correctlySelected?'You solved the letters, but that skill does not fit this particular scenario. ':!correctlyUnscrambled?'The letter order needs another look. ':'';
-    $('lesson').textContent=reason+SKILLS[round].lesson;
-    $('next').textContent=round===4?'See my score →':'Next challenge →';
-    $('submit-row').hidden=true;
-    for(const btn of $('options').children)btn.disabled=true;
-    for(const btn of $('answer').querySelectorAll('button'))btn.disabled=true;
-    for(const btn of $('bank').querySelectorAll('button'))btn.disabled=true;
-    $('undo').disabled=true;$('clear').disabled=true;$('shuffle').disabled=true;
-    $('scenario-support').textContent=isRight?'Great choice. '+SKILLS[round].lesson:SKILLS[round].lesson;
-    updateProgress();
-  }
-  function nextRound(){if(!started||finished||$('feedback').hidden)return;round++;displayRound();}
-  function finish(timedOut){
-    if(finished)return;finished=true;started=false;clearInterval(ticker);ticker=null;
-    remaining=Math.max(0,remaining);$('clock').textContent=timeString(remaining);
-    $('game-screen').hidden=true;$('welcome-screen').hidden=true;$('result-screen').hidden=false;
-    $('result-title').textContent=timedOut?'Time is up!':'Your studio is complete!';
-    $('result-score').textContent=score+' / 5';
-    $('result-message').textContent=score===5?'You identified and solved all five soft skills. Excellent work!':timedOut?'You have completed '+answered+' challenge(s). Replay to unlock more skills!':'Every scenario is a learning opportunity. Try again to unlock all five!';
-    $('result-name').textContent=name;$('result-cu').textContent=cu;
-    $('result-rounds').textContent=answered+' / 5';$('result-time').textContent=timeString(remaining);
-    $('scenario-tag').textContent='Learning complete';
-    $('scenario-text').textContent=timedOut?'The timer ended. Your progress has been recorded.':'You explored five ways human skills support digital transformation.';
-    $('scenario-support').textContent='Save your scorecard as a JPG, or try again.';
-    updateProgress();
-  }
-  function replay(){
-    clearInterval(ticker);ticker=null;started=false;finished=false;remaining=MAX_SECONDS;
-    round=0;answered=0;score=0;selected=null;placed=[];bank=[];unlocked=new Set();
-    $('welcome-screen').hidden=false;$('game-screen').hidden=true;$('result-screen').hidden=true;
-    $('player-caption').textContent='Enter your name and CU to begin.';
-    $('scenario-tag').textContent='Your learning challenge';
-    $('scenario-text').textContent='Five skills. Five workplace scenarios. Are you ready to begin?';
-    $('scenario-support').textContent='Choose the soft skill that fits each situation, then unscramble its letters.';
-    resetArt();updateProgress();updateClock();validate();
-  }
-  function rounded(ctx,x,y,w,h,r,fill,stroke){ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke();}}
-  function fitText(ctx,value,maxWidth,base){let size=base;while(size>17){ctx.font='600 '+size+'px Poppins,system-ui,Arial';if(ctx.measureText(value).width<=maxWidth)break;size-=1;}return size;}
-  function scoreJpg(){
-    // Locally generated JPG scorecard in the garden branding, no external libraries.
-    const canvas=document.createElement('canvas');canvas.width=1600;canvas.height=1000;
-    const c=canvas.getContext('2d');if(!c)return;
-    c.fillStyle='#1b2a1b';c.fillRect(0,0,1600,1000);
-    const bg=c.createRadialGradient(800,300,50,800,500,800);bg.addColorStop(0,'#2d4429');bg.addColorStop(1,'#1b2a1b');c.fillStyle=bg;c.fillRect(0,0,1600,1000);
-    rounded(c,100,70,1400,860,44,'rgba(10,20,10,.35)','rgba(227,169,63,.45)');
-    // glow dots
-    [[190,150],[1420,190],[240,820],[1380,790],[800,125]].forEach(([x,y])=>{c.fillStyle='rgba(243,210,122,.9)';c.shadowColor='#f3d27a';c.shadowBlur=22;c.beginPath();c.arc(x,y,5,0,7);c.fill();});
-    c.shadowBlur=0;
-    c.textAlign='center';
-    c.fillStyle='#e3a93f';c.font='600 22px Poppins,Arial';c.fillText('G A M E   0 2   ·   S O F T   S K I L L S   D E V E L O P M E N T',800,160);
-    const g=c.createLinearGradient(0,190,0,280);g.addColorStop(0,'#f3c35c');g.addColorStop(1,'#d4912c');c.fillStyle=g;c.font='italic 700 78px Georgia,serif';c.fillText('The Soft Skills Studio',800,270);
-    c.fillStyle='#a9b9a0';c.font='28px Poppins,Arial';c.fillText(name,800,322);
-    c.textAlign='left';
-    rounded(c,160,370,1280,150,26,'#f6eedb');
-    c.fillStyle='#7b5a1c';c.font='600 20px Poppins,Arial';c.fillText('SOFT SKILLS UNLOCKED',200,420);
-    c.fillStyle='#b9791c';c.font='700 84px Georgia,serif';c.fillText(score+' / 5',200,495);
-    const decor=[['💬','communication','#f1c453'],['💗','empathy','#e0568f'],['🤝','collaboration','#4fb06a'],['🔄','adaptability','#4aa3e0'],['🧩','problem-solving','#9a6fe0']];
-    decor.forEach(([emoji,id,col],i)=>{
-      const x=830+i*118,y=405,on=unlocked.has(id);
-      c.beginPath();c.arc(x+42,y+42,42,0,7);c.fillStyle=on?col:'#d9cfb4';c.globalAlpha=on?1:.55;c.fill();c.globalAlpha=1;
-      c.font='40px system-ui,Arial';c.textAlign='center';c.fillText(emoji,x+42,y+57);c.textAlign='left';
-    });
-    const metrics=[['NAME',name],['CONSTITUENT UNIT',cu],['CHALLENGES ANSWERED',answered+' / 5'],['TIME LEFT',timeString(remaining)]];
-    metrics.forEach(([label,value],i)=>{
-      const row=Math.floor(i/2),col=i%2,x=160+col*650,y=550+row*125;
-      rounded(c,x,y,630,105,20,'#fffaf0');
-      c.fillStyle='#9a8660';c.font='600 17px Poppins,Arial';c.fillText(label,x+24,y+34);
-      c.fillStyle='#24402f';const fs=fitText(c,value,578,29);c.font='600 '+fs+'px Poppins,system-ui,Arial';c.fillText(value,x+24,y+78);
-    });
-    c.textAlign='center';
-    c.fillStyle='#e3a93f';c.font='500 34px Georgia,serif';c.fillText('Three Years In, Three Years Forward',800,848);
-    c.fillStyle='#7c8c76';c.font='18px Poppins,Arial';c.fillText('Office of the Vice President for Digital Transformation, University of the Philippines',800,886);
-    const a=document.createElement('a');a.download='Game2-Soft-Skills-'+(name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'player')+'.jpg';a.href=canvas.toDataURL('image/jpeg',.94);a.click();
-  }
-  $('player-name').addEventListener('input',validate);
-  $('player-cu').addEventListener('change',validate);
-  // Ambient background music, generated live with the Web Audio API (no audio files needed).
-  const Music=(()=>{
-    let ctx,master,timer=null,next=0,bar=0,enabled=false,userMuted=false;
-    const CH=[[130.81,196,261.63,329.63],[110,164.81,220,261.63],[87.31,130.81,174.61,261.63],[98,146.83,196,246.94]];
-    const SP=[523.25,587.33,659.25,783.99,880,1046.5];
-    function init(){
-      ctx=new (window.AudioContext||window.webkitAudioContext)();
-      master=ctx.createGain();master.gain.value=0;
-      const lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=1800;
-      const dl=ctx.createDelay(1);dl.delayTime.value=.45;
-      const fb=ctx.createGain();fb.gain.value=.38;dl.connect(fb);fb.connect(dl);
-      const wet=ctx.createGain();wet.gain.value=.5;
-      master.connect(lp);lp.connect(ctx.destination);lp.connect(dl);dl.connect(wet);wet.connect(ctx.destination);
-    }
-    function tone(f,t,dur,type,vol,att){
-      const o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.value=f;
-      g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+att);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
-      o.connect(g);g.connect(master);o.start(t);o.stop(t+dur+.1);
-    }
-    function scheduleBar(t){
-      CH[bar%4].forEach((f,i)=>tone(f,t,4.6,i<2?'triangle':'sine',i<2?.07:.045,1.2));
-      for(let i=0;i<8;i++){if(Math.random()<.7)tone(SP[Math.floor(Math.random()*SP.length)],t+i*.5+Math.random()*.05,1.6,'sine',.035,.01);}
-      bar++;
-    }
-    function tick(){while(next<ctx.currentTime+1.5){scheduleBar(next);next+=4;}}
-    function ui(){const b=$('music');b.textContent=enabled?'🎵 Music on':'🎵 Music off';b.setAttribute('aria-pressed',String(enabled));}
-    function start(){
-      if(!ctx)init();
-      ctx.resume();
-      if(!timer){next=ctx.currentTime+.1;tick();timer=setInterval(tick,500);}
-      master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setValueAtTime(master.gain.value,ctx.currentTime);master.gain.linearRampToValueAtTime(.8,ctx.currentTime+2);
-      enabled=true;ui();
-    }
-    function stop(){
-      if(!ctx)return;
-      master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setValueAtTime(master.gain.value,ctx.currentTime);master.gain.linearRampToValueAtTime(0,ctx.currentTime+.6);
-      enabled=false;ui();
-      setTimeout(()=>{if(!enabled){clearInterval(timer);timer=null;ctx.suspend();}},800);
-    }
-    document.addEventListener('visibilitychange',()=>{if(!ctx||!enabled)return;document.hidden?ctx.suspend():ctx.resume();});
-    return {
-      toggle(){if(enabled){userMuted=true;stop();}else{userMuted=false;start();}},
-      autoStart(){if(!userMuted&&!enabled)start();}
-    };
-  })();
-  $('music').addEventListener('click',()=>Music.toggle());
-  $('ready').addEventListener('click',()=>{Music.autoStart();startGame();});
-  $('submit').addEventListener('click',checkAnswer);
-  $('next').addEventListener('click',nextRound);
-  $('undo').addEventListener('click',undo);
-  $('clear').addEventListener('click',clearTiles);
-  $('shuffle').addEventListener('click',shuffleTiles);
-  $('again').addEventListener('click',replay);
-  $('download').addEventListener('click',scoreJpg);
-  updateProgress();updateClock();validate();
+'use strict';
+const SK=[
+{id:'communication',name:'Communication',col:'#f1c453',tag:'Clear updates help everyone move forward.',lesson:'Communication means explaining information clearly, listening actively, and confirming that everyone understands the next step.',sc:'A new online request process has launched, but staff across several offices are confused about its steps and deadlines. What skill helps everyone understand the process?'},
+{id:'empathy',name:'Empathy',col:'#e0568f',tag:'Change goes better when people are guided, not pushed.',lesson:'Empathy means listening to people’s experiences, recognizing different needs, and designing support that works for them.',sc:'An employee has trouble using an online service because the instructions are difficult to follow. A teammate wants to understand their experience before offering support.'},
+{id:'collaboration',name:'Collaboration',col:'#4fb06a',tag:'Good ideas grow faster when offices share.',lesson:'Collaboration is working across people and teams, sharing knowledge and roles, and solving a shared challenge together.',sc:'Two campus offices are developing similar dashboards and duplicating efforts. They decide to combine knowledge and coordinate responsibilities.'},
+{id:'adaptability',name:'Adaptability',col:'#4aa3e0',tag:'Plans shift. Bend, don’t break.',lesson:'Adaptability is staying open to change, learning new approaches, and adjusting when conditions or technologies shift.',sc:'An old platform will be retired next month. A team learns a replacement system and updates its routines despite some uncertainty.'},
+{id:'problem-solving',name:'Problem-solving',col:'#9a6fe0',tag:'Find the real cause before choosing a fix.',lesson:'Problem-solving means identifying the root cause of a challenge, weighing options, testing fixes, and learning from results.',sc:'A recurring sign-in error prevents users from reaching an online service. The team investigates patterns, tests possible causes, and checks which fix works.'}];
+const $=id=>document.getElementById(id),norm=v=>String(v).toUpperCase().replace(/[^A-Z]/g,''),MAX=300;
+let name='',cu='',round=0,answered=0,score=0,sel=null,placed=[],bank=[],scr=[],unlocked=new Set(),res={},started=false,finished=false,deadline=0,ticker=null,remaining=MAX;
+
+/* ---------- Garden art (shared by page, corners and PNG) ---------- */
+const DEFS=`<defs><filter id="bl"><feGaussianBlur stdDeviation="14"/></filter><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b3a24"/><stop offset="1" stop-color="#0d1c12"/></linearGradient>
+<g id="pl" fill="#fff8ea" stroke="#e8cf98" stroke-width=".8">${[0,72,144,216,288].map(a=>`<ellipse cx="0" cy="-12" rx="7" ry="13" transform="rotate(${a})"/>`).join('')}<circle r="4" fill="#f2b84b" stroke="none"/></g>
+<g id="cl"><path d="M0 0C-32-12-36-62 0-84C32-62 30-12 0 0Z" fill="#fbf4e2" stroke="#e8cf98"/><path d="M0-6V-58" stroke="#e3a93f" stroke-width="5" stroke-linecap="round"/></g>
+<path id="lf" d="M0 0Q12-14 0-34Q-12-14 0 0Z" fill="#2b6a43" stroke="#d9a441" stroke-width=".6"/></defs>`;
+const FERN=[...Array(9)].map((_,i)=>{const x=8+i*15,y=16+i*11;return`M${x} ${y}l16-20M${x} ${y}l-6 22`}).join('');
+const CORNER=`<path d="${FERN}" stroke="#d9a441" fill="none" stroke-width="1.3" opacity=".75"/>
+<use href="#lf" transform="translate(20 130) rotate(160) scale(2.4)"/><use href="#lf" transform="translate(120 20) rotate(100) scale(2.2)"/><use href="#lf" transform="translate(70 70) rotate(135) scale(2.6)"/>
+<use href="#pl" transform="translate(55 45) scale(1.7)"/><use href="#pl" transform="translate(130 52) scale(1.1)"/><use href="#pl" transform="translate(40 135) scale(1.2)"/><use href="#pl" transform="translate(100 112) scale(.8)"/><use href="#cl" transform="translate(26 260) rotate(-10) scale(1.1)"/>`;
+function bgSVG(W,H){const s=1.3;return`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">${DEFS}<g transform="scale(${s})">${CORNER}</g><g transform="translate(${W} 0) scale(${-s} ${s})">${CORNER}</g><g transform="translate(0 ${H}) scale(${s} ${-s})">${CORNER}</g><g transform="translate(${W} ${H}) scale(${-s} ${-s})">${CORNER}</g></svg>`}
+function bf(x,y,s,c,o){return`<g transform="translate(${x} ${y}) scale(${s})" opacity="${o}"><g fill="${c}" stroke="#fff8" stroke-width=".8"><ellipse cx="-10" cy="-6" rx="9" ry="13" transform="rotate(-28 -10 -6)"/><ellipse cx="10" cy="-6" rx="9" ry="13" transform="rotate(28 10 -6)"/><ellipse cx="-8" cy="8" rx="6" ry="8" transform="rotate(20 -8 8)"/><ellipse cx="8" cy="8" rx="6" ry="8" transform="rotate(-20 8 8)"/></g><rect x="-1.5" y="-10" width="3" height="22" rx="1.5" fill="#3a2a10"/></g>`}
+function plant(i,on){const c=SK[i].col,x=95+i*182,t=[215,185,165,200,230][i];
+ let g=`<path d="M${x} 480V${t+20}" stroke="#3f9a5b" stroke-width="5" fill="none"/><use href="#lf" transform="translate(${x} 430) rotate(65) scale(1.7)"/><use href="#lf" transform="translate(${x} 385) rotate(-65) scale(1.7)"/>`;
+ if(on)g+=`<circle cx="${x}" cy="${t-10}" r="70" fill="${c}" opacity=".45" filter="url(#bl)"/><use href="#pl" transform="translate(${x} ${t}) scale(2.6)"/><circle cx="${x}" cy="${t}" r="9" fill="${c}"/>${bf(x,t-70,1.5,c,1)}`;
+ else g+=`<ellipse cx="${x}" cy="${t+8}" rx="13" ry="32" fill="#cfe3b4" stroke="#d9a441" opacity=".85"/>${bf(x+18,t-48,.9,c,.22)}`;
+ return g}
+function garden(w){const W=920,H=520,on=id=>unlocked.has(id);
+ const dims=w?`width="${w}" height="${Math.round(w*H/W)}"`:'';
+ let s=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" ${dims}>${DEFS}<rect width="${W}" height="${H}" fill="url(#sky)"/><g fill="#d9a441" fill-opacity=".13" font-family="monospace" font-size="16" letter-spacing="7"><text x="30" y="60">0 1 0 1 1</text><text x="640" y="40">1 0 0 1 0 1</text><text x="420" y="110">0 0 1 1 0</text><text x="760" y="250">1 0 1 1</text><text x="60" y="260">0 1 1 0 1</text></g>
+ <ellipse cx="460" cy="560" rx="560" ry="105" fill="#1d4a2e"/>`;
+ SK.forEach((k,i)=>s+=plant(i,on(k.id)));
+ [60,230,420,610,800].forEach((x,i)=>s+=`<use href="#pl" transform="translate(${x+(i%2?30:0)} 498) scale(${.8+i%2*.25})"/>`);
+ return s+`</svg>`}
+
+/* ---------- Game logic ---------- */
+const ts=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+function updateClock(){if(started&&!finished){remaining=Math.max(0,Math.ceil((deadline-performance.now())/1000));if(!remaining){finish(true);return}}
+ $('clock').textContent=ts(remaining);$('tbox').classList.toggle('warning',remaining<=60&&remaining>30);$('tbox').classList.toggle('critical',remaining<=30)}
+const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function scrambled(w){const l=norm(w).split('');let o=shuf(l);for(let i=0;i<8&&o.join('')===l.join('');i++)o=shuf(l);if(o.join('')===l.join(''))o.reverse();return o.join('')}
+function updateProgress(){$('plabel').textContent=answered+' of 5 challenges completed';$('slabel').textContent=score+' skills unlocked';$('pfill').style.width=answered*20+'%';$('ptrack').setAttribute('aria-valuenow',answered);$('garden').innerHTML=garden();$('pb').textContent=score?'🌸 '+score+' of 5 blooms':'🌸 Five skills to bloom'}
+function validate(){$('ready').disabled=!($('pname').value.trim()&&$('pcu').value)}
+function startGame(){if($('ready').disabled)return;name=$('pname').value.trim();cu=$('pcu').value;started=true;finished=false;remaining=MAX;deadline=performance.now()+MAX*1000;
+ $('pcap').textContent=name+' · '+cu;$('pp').textContent='👤 '+name;$('welcome').hidden=true;$('result').hidden=true;$('game').hidden=false;displayRound();updateClock();clearInterval(ticker);ticker=setInterval(updateClock,250)}
+function displayRound(){if(round>=5){finish(false);return}
+ sel=null;placed=[];bank=[];$('rbadge').textContent='ROUND '+(round+1)+' OF 5';$('stag').textContent='SCENARIO '+(round+1)+' · WHICH SOFT SKILL FITS?';$('stext').textContent='“'+SK[round].sc+'”';
+ $('ssup').textContent='Choose a scrambled skill on the right, then put its letters in order before checking your answer.';$('opts').innerHTML='';
+ scr=SK.map(s=>({id:s.id,scramble:scrambled(s.name)}));
+ shuf(scr).forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.className='opt';b.dataset.id=s.id;b.setAttribute('aria-pressed','false');
+  b.innerHTML=`<span class="n">${i+1}</span><span class="l">${s.scramble}</span><span class="r" aria-hidden="true"></span>`;b.onclick=()=>selectSkill(s.id);$('opts').appendChild(b)});
+ $('fb').hidden=true;$('fb').classList.remove('wrong');$('srow').hidden=false;$('hint').textContent='Select a scrambled skill to begin.';$('phelp').textContent='Choose one of the scrambled skill cards above to reveal its letter tiles.';renderTiles();updateProgress()}
+const locked=()=>!sel||finished||!started||!$('fb').hidden;
+function selectSkill(id){if(finished||!started||!$('fb').hidden)return;sel=SK.find(s=>s.id===id);placed=[];
+ bank=scr.find(s=>s.id===id).scramble.split('').map((letter,id)=>({id,letter,used:false}));
+ for(const b of $('opts').children)b.setAttribute('aria-pressed',b.dataset.id===id);
+ $('phelp').textContent='Tap each letter to form the skill. Tap a placed letter to undo it. The hyphen in Problem-solving is added for you.';renderTiles()}
+function addTile(id){if(locked())return;const t=bank.find(t=>t.id===id);if(!t||t.used)return;t.used=true;placed.push(id);renderTiles()}
+function removeTile(i){if(locked())return;const t=bank.find(t=>t.id===placed[i]);if(t)t.used=false;placed.splice(i,1);renderTiles()}
+function clearTiles(){bank.forEach(t=>t.used=false);placed=[];renderTiles()}
+function shuffleTiles(){if(!sel||placed.length)return;bank=shuf(bank.map(t=>t.letter)).map((letter,id)=>({id,letter,used:false}));renderTiles()}
+function renderTiles(){const a=$('slots'),b=$('bank');a.innerHTML='';b.innerHTML='';const n=sel?norm(sel.name).length:0;
+ if(!sel)a.textContent='Choose a jumbled skill first';
+ else{for(let i=0;i<n;i++){if(i<placed.length){const t=bank.find(t=>t.id===placed[i]),e=document.createElement('button');e.type='button';e.className='tile a';e.textContent=t.letter;e.setAttribute('aria-label','Remove letter '+t.letter);e.onclick=()=>removeTile(i);a.appendChild(e)}else{const e=document.createElement('span');e.className='empty';a.appendChild(e)}}
+  bank.forEach(t=>{const e=document.createElement('button');e.type='button';e.className='tile b';e.textContent=t.letter;e.disabled=t.used;e.setAttribute('aria-label','Add letter '+t.letter);e.onclick=()=>addTile(t.id);b.appendChild(e)})}
+ $('submit').disabled=!sel||placed.length!==n;$('undo').disabled=$('clear').disabled=!placed.length;$('shuffle').disabled=!sel||placed.length>0;
+ if(sel)$('hint').textContent=placed.length===n?'All letters placed — check your answer!':placed.length+' / '+n+' letters arranged'}
+function checkAnswer(){if(!started||finished||!sel||placed.length!==bank.length)return;
+ const formed=placed.map(id=>bank.find(t=>t.id===id).letter).join(''),okL=formed===norm(sel.name),okS=sel.id===SK[round].id,ok=okL&&okS;answered++;
+ res[SK[round].id]=ok?'ok':'miss';if(ok){score++;unlocked.add(SK[round].id)}
+ $('fb').hidden=false;$('fb').classList.toggle('wrong',!ok);$('fbt').textContent=ok?'✓ Correct! A flower bloomed.':'↗ Not quite — here is the best match.';$('fba').textContent=SK[round].name;
+ $('lesson').textContent=(okL&&!okS?'You solved the letters, but that skill does not fit this scenario. ':!okL?'The letter order needs another look. ':'')+SK[round].lesson;
+ $('next').textContent=round===4?'See my score →':'Next challenge →';$('srow').hidden=true;
+ document.querySelectorAll('#opts button,#slots button,#bank button,.tools button').forEach(b=>b.disabled=true);
+ $('ssup').textContent=SK[round].lesson;updateProgress()}
+function nextRound(){if(!started||finished||$('fb').hidden)return;round++;displayRound()}
+function finish(timedOut){if(finished)return;finished=true;started=false;clearInterval(ticker);ticker=null;$('clock').textContent=ts(remaining);
+ $('game').hidden=true;$('welcome').hidden=true;$('result').hidden=false;$('rtitle').textContent=timedOut?'Time is up!':'Your garden is in bloom!';$('rscore').textContent=score+' / 5';
+ $('rmsg').textContent=score===5?'You identified and solved all five soft skills. Excellent work!':timedOut?'You completed '+answered+' challenge(s). Replay to bloom more skills!':'Every scenario is a learning opportunity. Try again to bloom all five!';
+ $('rname').textContent=name;$('rcu').textContent=cu;$('rrounds').textContent=answered+' / 5';$('rtime').textContent=ts(remaining);
+ $('stag').textContent='LEARNING COMPLETE';$('stext').textContent=timedOut?'The timer ended. Your progress has been recorded.':'You explored five ways human skills support digital transformation.';$('ssup').textContent='Save your scorecard as a PNG, or try again.';updateProgress()}
+function replay(){clearInterval(ticker);ticker=null;started=finished=false;remaining=MAX;round=answered=score=0;sel=null;placed=[];bank=[];unlocked=new Set();res={};
+ $('welcome').hidden=false;$('game').hidden=true;$('result').hidden=true;$('pcap').textContent='Enter your name and CU to begin.';$('pp').textContent='👤 Waiting for player details';
+ $('stag').textContent='YOUR LEARNING CHALLENGE';$('stext').textContent='Five skills. Five workplace scenarios. Are you ready to begin?';$('ssup').textContent='Choose the soft skill that fits each situation, then unscramble its letters.';updateProgress();updateClock();validate()}
+
+/* ---------- PNG scorecard ---------- */
+const loadImg=svg=>new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg)});
+function rr(c,x,y,w,h,r,f,s,dash){c.beginPath();c.roundRect(x,y,w,h,r);if(f){c.fillStyle=f;c.fill()}if(s){c.strokeStyle=s;c.lineWidth=2;c.setLineDash(dash||[]);c.stroke();c.setLineDash([])}}
+function wrap(c,t,x,y,mw,lh,max){const w=t.split(' ');let l='',n=0;for(const k of w){const tt=l?l+' '+k:k;if(c.measureText(tt).width>mw&&l){c.fillText(l,x,y+n*lh);l=k;if(++n>=max)return}else l=tt}c.fillText(l,x,y+n*lh)}
+function fit(c,t,mw,base,wt,fam){let s=base;while(s>14){c.font=wt+' '+s+'px '+fam;if(c.measureText(t).width<=mw)break;s--}}
+async function scoreCard(){
+ const W=1080,H=1550,cv=document.createElement('canvas');cv.width=W;cv.height=H;const c=cv.getContext('2d');
+ try{await Promise.all([document.fonts.load('700 70px "Cormorant Garamond"'),document.fonts.load('600 20px Inter')])}catch(e){}
+ const [bg,gd]=await Promise.all([loadImg(bgSVG(W,H)),loadImg(garden(1840))]);
+ const g=c.createRadialGradient(540,300,50,540,700,1000);g.addColorStop(0,'#27432b');g.addColorStop(1,'#101d14');c.fillStyle=g;c.fillRect(0,0,W,H);
+ c.fillStyle='#d9a441';c.globalAlpha=.07;c.font='16px monospace';for(let y=40;y<H;y+=70)for(let x=(y/70%2)*90;x<W;x+=180)c.fillText('0 1 0 1 1',x+20,y);c.globalAlpha=1;
+ c.drawImage(bg,0,0,W,H);
+ rr(c,40,36,1000,1364,34,'rgba(10,22,14,.6)','rgba(217,164,65,.55)');
+ c.textAlign='center';c.fillStyle='#e3a93f';c.font='700 72px "Cormorant Garamond",Georgia,serif';c.fillText('My Soft Skills Garden',540,118);
+ c.fillStyle='#f6eedb';fit(c,name,880,32,'600','Inter, Arial');c.fillText(name,540,166);
+ c.fillStyle='#b4c2ac';fit(c,cu,880,22,'500','Inter, Arial');c.fillText(cu,540,198);
+ c.save();c.beginPath();c.roundRect(80,222,920,520,26);c.clip();c.drawImage(gd,80,222,920,520);c.restore();rr(c,80,222,920,520,26,null,'rgba(217,164,65,.6)');
+ c.textAlign='left';c.fillStyle='#f6eedb';c.font='700 19px Inter, Arial';c.letterSpacing='5px';c.fillText('SKILLS IN YOUR GARDEN',84,800);c.letterSpacing='0px';
+ c.textAlign='right';c.fillStyle='#e3a93f';c.font='700 50px "Cormorant Garamond",Georgia,serif';c.fillText(score+' of 5',1000,806);
+ SK.forEach((k,i)=>{const x=80+(i%2)*472,y=826+Math.floor(i/2)*110,st=res[k.id];
+  rr(c,x,y,448,98,22,'#f6eedb');c.beginPath();c.arc(x+48,y+49,26,0,7);c.fillStyle=st==='ok'?k.col:'#2a3b2b';c.fill();c.lineWidth=4;c.strokeStyle='#14241a';c.stroke();
+  c.textAlign='left';c.font='700 17px Inter, Arial';c.fillStyle=k.col==='#f1c453'?'#b9791c':k.col;c.fillText(k.name,x+92,y+30);
+  const w=c.measureText(k.name).width;c.font='600 14px Inter, Arial';c.fillStyle=st==='ok'?'#2f8f4e':'#d9732a';c.fillText((st==='ok'?'  ✓ bloomed':st==='miss'?'  ✗ missed':'  – not reached'),x+92+w,y+30);
+  c.font='italic 600 20px "Cormorant Garamond",Georgia,serif';c.fillStyle='#24402f';wrap(c,'“'+k.tag+'”',x+92,y+57,336,22,2)});
+ rr(c,80,1186,920,66,16,'rgba(0,0,0,.25)','rgba(243,210,122,.6)',[8,6]);c.textAlign='center';c.fillStyle='#f3d27a';c.font='700 21px Inter, Arial';c.fillText('Challenges answered: '+answered+' / 5   ·   Time left: '+ts(remaining),540,1227);
+ rr(c,80,1274,920,110,24,'rgba(5,12,8,.8)','rgba(217,164,65,.6)');c.fillStyle='#f6eedb';c.font='italic 700 48px "Cormorant Garamond",Georgia,serif';c.fillText('Every skill grows with practice.',540,1332);
+ c.fillStyle='#e3a93f';c.font='700 13px Inter, Arial';c.letterSpacing='5px';c.fillText('YOUR LESSON TO TAKE HOME',540,1364);c.letterSpacing='0px';
+ c.fillStyle='#d9a441';c.font='600 54px "Cormorant Garamond",Georgia,serif';c.fillText('Three Years In, Three Years Forward',540,1463);
+ c.fillStyle='#8a9b84';c.font='18px Inter, Arial';c.fillText('Office of the Vice President for Digital Transformation, University of the Philippines',540,1503);
+ cv.toBlob(b=>{const a=document.createElement('a');a.download='Game2-Soft-Skills-'+(name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'player')+'.png';a.href=URL.createObjectURL(b);a.click();setTimeout(()=>URL.revokeObjectURL(a.href),3000)},'image/png')}
+
+/* ---------- Music (Web Audio, no files) ---------- */
+const Music=(()=>{let ctx,master,timer=null,next=0,bar=0,on=false,muted=false;
+ const CH=[[130.81,196,261.63,329.63],[110,164.81,220,261.63],[87.31,130.81,174.61,261.63],[98,146.83,196,246.94]],SP=[523.25,587.33,659.25,783.99,880,1046.5];
+ function init(){ctx=new(window.AudioContext||window.webkitAudioContext)();master=ctx.createGain();master.gain.value=0;const lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=1800;const dl=ctx.createDelay(1);dl.delayTime.value=.45;const fb=ctx.createGain();fb.gain.value=.38;dl.connect(fb);fb.connect(dl);const w=ctx.createGain();w.gain.value=.5;master.connect(lp);lp.connect(ctx.destination);lp.connect(dl);dl.connect(w);w.connect(ctx.destination)}
+ function tone(f,t,d,ty,v,a){const o=ctx.createOscillator(),g=ctx.createGain();o.type=ty;o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+a);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(master);o.start(t);o.stop(t+d+.1)}
+ function sched(t){CH[bar%4].forEach((f,i)=>tone(f,t,4.6,i<2?'triangle':'sine',i<2?.07:.045,1.2));for(let i=0;i<8;i++)if(Math.random()<.7)tone(SP[Math.floor(Math.random()*SP.length)],t+i*.5+Math.random()*.05,1.6,'sine',.035,.01);bar++}
+ const tick=()=>{while(next<ctx.currentTime+1.5){sched(next);next+=4}};
+ const ui=()=>{$('music').textContent=on?'🎵 Music on':'🎵 Music off';$('music').setAttribute('aria-pressed',on)};
+ function start(){if(!ctx)init();ctx.resume();if(!timer){next=ctx.currentTime+.1;tick();timer=setInterval(tick,500)}master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setValueAtTime(master.gain.value,ctx.currentTime);master.gain.linearRampToValueAtTime(.8,ctx.currentTime+2);on=true;ui()}
+ function stop(){if(!ctx)return;master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setValueAtTime(master.gain.value,ctx.currentTime);master.gain.linearRampToValueAtTime(0,ctx.currentTime+.6);on=false;ui();setTimeout(()=>{if(!on){clearInterval(timer);timer=null;ctx.suspend()}},800)}
+ document.addEventListener('visibilitychange',()=>{if(!ctx||!on)return;document.hidden?ctx.suspend():ctx.resume()});
+ return{toggle(){if(on){muted=true;stop()}else{muted=false;start()}},auto(){if(!muted&&!on)start()}}})();
+
+/* ---------- Wire up ---------- */
+document.body.insertAdjacentHTML('afterbegin',[1,2,3,4].map(n=>`<svg class="corner c${n}" viewBox="0 0 300 300" aria-hidden="true">${n===1?DEFS:''}${CORNER}</svg>`).join(''));
+$('pname').addEventListener('input',validate);$('pcu').addEventListener('change',validate);
+$('music').onclick=()=>Music.toggle();$('ready').onclick=()=>{Music.auto();startGame()};$('submit').onclick=checkAnswer;$('next').onclick=nextRound;
+$('undo').onclick=()=>removeTile(placed.length-1);$('clear').onclick=clearTiles;$('shuffle').onclick=shuffleTiles;$('again').onclick=replay;$('download').onclick=scoreCard;
+updateProgress();updateClock();validate();
 </script>
 </body>
 </html>
