@@ -27,7 +27,19 @@ button,select,input{font:inherit}button{cursor:pointer}
 h1{font:italic 700 clamp(38px,5vw,54px)/1.05 var(--serif);margin:4px 0 10px;color:var(--cream)}
 h2{font:italic 700 32px/1.1 var(--serif);margin:2px 0 8px;color:var(--cream)}
 p{margin:0}.muted{color:var(--muted);font-size:13.5px}
-.garden{border:1px solid var(--line);border-radius:20px;overflow:hidden;line-height:0}.garden svg{width:100%;height:auto}
+.garden{border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.garden{line-height:1.5;position:relative;height:300px;background:radial-gradient(ellipse at 50% 55%,#3f5d33 0,#26402a 42%,#122016 100%)}
+.garden::before,.garden::after{content:"";position:absolute;left:50%;top:48%;border-radius:50%;transform:translate(-50%,-50%)}
+.garden::before{width:330px;height:330px;border:1px dashed rgba(217,164,65,.3)}.garden::after{width:210px;height:210px;border:1px solid rgba(217,164,65,.18)}
+.hub{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:112px;height:112px;border-radius:50%;border:1px solid var(--line);background:radial-gradient(circle,#24391f,#101b0f);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1;text-align:center}
+.hub b{font-size:34px;line-height:1.1}.hub span{font-size:9.5px;font-weight:700;letter-spacing:.14em;color:var(--gold);text-transform:uppercase}
+.tok{position:absolute;z-index:2;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:5px;opacity:.5;filter:grayscale(.8);transition:all .45s}
+.tok i{--c:#e3a93f;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:28px;border:1px solid rgba(255,255,255,.18);background:radial-gradient(circle,rgba(255,255,255,.1),rgba(0,0,0,.4))}
+.tok em{font-style:normal;font-size:10.5px;font-weight:700;color:var(--cream);background:rgba(9,20,13,.75);border-radius:9px;padding:2px 8px;white-space:nowrap}
+.tok.on{opacity:1;filter:none;transform:translate(-50%,-50%) scale(1.1)}
+.tok.on i{border-color:var(--c);background:radial-gradient(circle,color-mix(in srgb,var(--c) 50%,#111),#101a10);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 30%,transparent),0 0 30px 8px color-mix(in srgb,var(--c) 55%,transparent)}
+.cap{position:absolute;right:10px;bottom:8px;z-index:3;font-size:10px;font-weight:600;color:var(--gold2);background:rgba(9,20,13,.7);border:1px solid var(--line);border-radius:10px;padding:4px 9px}
+
 .scene{border:1px solid var(--line);border-radius:20px;padding:20px;background:rgba(0,0,0,.25)}
 .scene .tag{font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
 .scenario-text{font:italic 600 clamp(21px,2.4vw,27px)/1.35 var(--serif)}
@@ -95,12 +107,12 @@ p{margin:0}.muted{color:var(--muted);font-size:13.5px}
 </head>
 <body>
 <main class="shell">
-  <div class="pills"><span class="pill" id="pp">👤 Waiting for player details</span><span class="pill" id="pb">🌸 Five skills to bloom</span><button type="button" class="pill" id="music" aria-pressed="false">🎵 Music off</button></div>
+  <div class="pills"><span class="pill" id="pp">👤 Waiting for player details</span><span class="pill" id="pb">⭐ Five skills to unlock</span><button type="button" class="pill" id="music" aria-pressed="false">🎵 Music off</button></div>
   <div class="cols">
     <section class="pane" aria-label="Scenario and garden">
-      <div><div class="eyebrow">GAME 02 · SOFT SKILLS DEVELOPMENT</div><h1>Grow Your Soft Skills Garden</h1>
-      <p class="muted">Read a real-world challenge, find the matching soft skill among five scrambled choices, and put its letters back in order. Each correct answer makes a flower bloom and a butterfly land.</p></div>
-      <div class="garden" id="garden" role="img" aria-label="Garden with five flowers, one per soft skill"></div>
+      <div><div class="eyebrow">GAME 02 · SOFT SKILLS DEVELOPMENT</div><h1>The Soft Skills Studio</h1>
+      <p class="muted">Read a real-world challenge, find the matching soft skill among five scrambled choices, and put its letters back in order. Each correct answer lights up that skill in the studio.</p></div>
+      <div class="garden" id="garden" role="img" aria-label="Five soft skill icons that light up as you unlock them"></div>
       <div class="scene" aria-live="polite"><div class="tag" id="stag">YOUR LEARNING CHALLENGE</div><p class="scenario-text" id="stext">Five skills. Five workplace scenarios. Are you ready to begin?</p><p class="scene-support" id="ssup">Choose the soft skill that fits each situation, then unscramble its letters.</p></div>
       <div class="prog"><div class="prog-head"><span id="plabel">0 of 5 challenges completed</span><span id="slabel">0 skills unlocked</span></div><div class="track" role="progressbar" aria-label="Completed challenges" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" id="ptrack"><div class="fill" id="pfill"></div></div></div>
     </section>
@@ -159,6 +171,8 @@ const CORNER=`<path d="${FERN}" stroke="#d9a441" fill="none" stroke-width="1.3" 
 <use href="#lf" transform="translate(20 130) rotate(160) scale(2.4)"/><use href="#lf" transform="translate(120 20) rotate(100) scale(2.2)"/><use href="#lf" transform="translate(70 70) rotate(135) scale(2.6)"/>
 <use href="#pl" transform="translate(55 45) scale(1.7)"/><use href="#pl" transform="translate(130 52) scale(1.1)"/><use href="#pl" transform="translate(40 135) scale(1.2)"/><use href="#pl" transform="translate(100 112) scale(.8)"/><use href="#cl" transform="translate(26 260) rotate(-10) scale(1.1)"/>`;
 function bgSVG(W,H){const s=1.3;return`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">${DEFS}<g transform="scale(${s})">${CORNER}</g><g transform="translate(${W} 0) scale(${-s} ${s})">${CORNER}</g><g transform="translate(0 ${H}) scale(${s} ${-s})">${CORNER}</g><g transform="translate(${W} ${H}) scale(${-s} ${-s})">${CORNER}</g></svg>`}
+const ART={communication:['💬',21,24],empathy:['💗',78,18],collaboration:['🤝',85,66],adaptability:['🔄',50,82],'problem-solving':['🧩',15,68]};
+function art(){return SK.map(k=>{const [e,x,y]=ART[k.id];return`<div class="tok${unlocked.has(k.id)?' on':''}" style="left:${x}%;top:${y}%"><i style="--c:${k.col}">${e}</i><em>${k.name}</em></div>`}).join('')+'<div class="hub"><b>🌱</b><span>Grow together</span></div><span class="cap">Every correct answer unlocks a skill</span>'}
 function bf(x,y,s,c,o){return`<g transform="translate(${x} ${y}) scale(${s})" opacity="${o}"><g fill="${c}" stroke="#fff8" stroke-width=".8"><ellipse cx="-10" cy="-6" rx="9" ry="13" transform="rotate(-28 -10 -6)"/><ellipse cx="10" cy="-6" rx="9" ry="13" transform="rotate(28 10 -6)"/><ellipse cx="-8" cy="8" rx="6" ry="8" transform="rotate(20 -8 8)"/><ellipse cx="8" cy="8" rx="6" ry="8" transform="rotate(-20 8 8)"/></g><rect x="-1.5" y="-10" width="3" height="22" rx="1.5" fill="#3a2a10"/></g>`}
 function plant(i,on){const c=SK[i].col,x=95+i*182,t=[215,185,165,200,230][i];
  let g=`<path d="M${x} 480V${t+20}" stroke="#3f9a5b" stroke-width="5" fill="none"/><use href="#lf" transform="translate(${x} 430) rotate(65) scale(1.7)"/><use href="#lf" transform="translate(${x} 385) rotate(-65) scale(1.7)"/>`;
@@ -179,7 +193,7 @@ function updateClock(){if(started&&!finished){remaining=Math.max(0,Math.ceil((de
  $('clock').textContent=ts(remaining);$('tbox').classList.toggle('warning',remaining<=60&&remaining>30);$('tbox').classList.toggle('critical',remaining<=30)}
 const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 function scrambled(w){const l=norm(w).split('');let o=shuf(l);for(let i=0;i<8&&o.join('')===l.join('');i++)o=shuf(l);if(o.join('')===l.join(''))o.reverse();return o.join('')}
-function updateProgress(){$('plabel').textContent=answered+' of 5 challenges completed';$('slabel').textContent=score+' skills unlocked';$('pfill').style.width=answered*20+'%';$('ptrack').setAttribute('aria-valuenow',answered);$('garden').innerHTML=garden();$('pb').textContent=score?'🌸 '+score+' of 5 blooms':'🌸 Five skills to bloom'}
+function updateProgress(){$('plabel').textContent=answered+' of 5 challenges completed';$('slabel').textContent=score+' skills unlocked';$('pfill').style.width=answered*20+'%';$('ptrack').setAttribute('aria-valuenow',answered);$('garden').innerHTML=art();$('pb').textContent=score?'⭐ '+score+' of 5 skills unlocked':'⭐ Five skills to unlock'}
 function validate(){$('ready').disabled=!($('pname').value.trim()&&$('pcu').value)}
 function startGame(){if($('ready').disabled)return;name=$('pname').value.trim();cu=$('pcu').value;started=true;finished=false;remaining=MAX;deadline=performance.now()+MAX*1000;
  $('pcap').textContent=name+' · '+cu;$('pp').textContent='👤 '+name;$('welcome').hidden=true;$('result').hidden=true;$('game').hidden=false;displayRound();updateClock();clearInterval(ticker);ticker=setInterval(updateClock,250)}
@@ -208,15 +222,15 @@ function renderTiles(){const a=$('slots'),b=$('bank');a.innerHTML='';b.innerHTML
 function checkAnswer(){if(!started||finished||!sel||placed.length!==bank.length)return;
  const formed=placed.map(id=>bank.find(t=>t.id===id).letter).join(''),okL=formed===norm(sel.name),okS=sel.id===SK[round].id,ok=okL&&okS;answered++;
  res[SK[round].id]=ok?'ok':'miss';if(ok){score++;unlocked.add(SK[round].id)}
- $('fb').hidden=false;$('fb').classList.toggle('wrong',!ok);$('fbt').textContent=ok?'✓ Correct! A flower bloomed.':'↗ Not quite — here is the best match.';$('fba').textContent=SK[round].name;
+ $('fb').hidden=false;$('fb').classList.toggle('wrong',!ok);$('fbt').textContent=ok?'✓ Correct! Skill unlocked.':'↗ Not quite — here is the best match.';$('fba').textContent=SK[round].name;
  $('lesson').textContent=(okL&&!okS?'You solved the letters, but that skill does not fit this scenario. ':!okL?'The letter order needs another look. ':'')+SK[round].lesson;
  $('next').textContent=round===4?'See my score →':'Next challenge →';$('srow').hidden=true;
  document.querySelectorAll('#opts button,#slots button,#bank button,.tools button').forEach(b=>b.disabled=true);
  $('ssup').textContent=SK[round].lesson;updateProgress()}
 function nextRound(){if(!started||finished||$('fb').hidden)return;round++;displayRound()}
 function finish(timedOut){if(finished)return;finished=true;started=false;clearInterval(ticker);ticker=null;$('clock').textContent=ts(remaining);
- $('game').hidden=true;$('welcome').hidden=true;$('result').hidden=false;$('rtitle').textContent=timedOut?'Time is up!':'Your garden is in bloom!';$('rscore').textContent=score+' / 5';
- $('rmsg').textContent=score===5?'You identified and solved all five soft skills. Excellent work!':timedOut?'You completed '+answered+' challenge(s). Replay to bloom more skills!':'Every scenario is a learning opportunity. Try again to bloom all five!';
+ $('game').hidden=true;$('welcome').hidden=true;$('result').hidden=false;$('rtitle').textContent=timedOut?'Time is up!':'Your studio is complete!';$('rscore').textContent=score+' / 5';
+ $('rmsg').textContent=score===5?'You identified and solved all five soft skills. Excellent work!':timedOut?'You completed '+answered+' challenge(s). Replay to unlock more skills!':'Every scenario is a learning opportunity. Try again to unlock all five!';
  $('rname').textContent=name;$('rcu').textContent=cu;$('rrounds').textContent=answered+' / 5';$('rtime').textContent=ts(remaining);
  $('stag').textContent='LEARNING COMPLETE';$('stext').textContent=timedOut?'The timer ended. Your progress has been recorded.':'You explored five ways human skills support digital transformation.';$('ssup').textContent='Save your scorecard as a PNG, or try again.';updateProgress()}
 function replay(){clearInterval(ticker);ticker=null;started=finished=false;remaining=MAX;round=answered=score=0;sel=null;placed=[];bank=[];unlocked=new Set();res={};
@@ -229,29 +243,27 @@ function rr(c,x,y,w,h,r,f,s,dash){c.beginPath();c.roundRect(x,y,w,h,r);if(f){c.f
 function wrap(c,t,x,y,mw,lh,max){const w=t.split(' ');let l='',n=0;for(const k of w){const tt=l?l+' '+k:k;if(c.measureText(tt).width>mw&&l){c.fillText(l,x,y+n*lh);l=k;if(++n>=max)return}else l=tt}c.fillText(l,x,y+n*lh)}
 function fit(c,t,mw,base,wt,fam){let s=base;while(s>14){c.font=wt+' '+s+'px '+fam;if(c.measureText(t).width<=mw)break;s--}}
 async function scoreCard(){
- const W=1080,H=1550,cv=document.createElement('canvas');cv.width=W;cv.height=H;const c=cv.getContext('2d');
- try{await Promise.all([document.fonts.load('700 70px "Cormorant Garamond"'),document.fonts.load('600 20px Inter')])}catch(e){}
- const [bg,gd]=await Promise.all([loadImg(bgSVG(W,H)),loadImg(garden(1840))]);
- const g=c.createRadialGradient(540,300,50,540,700,1000);g.addColorStop(0,'#27432b');g.addColorStop(1,'#101d14');c.fillStyle=g;c.fillRect(0,0,W,H);
- c.fillStyle='#d9a441';c.globalAlpha=.07;c.font='16px monospace';for(let y=40;y<H;y+=70)for(let x=(y/70%2)*90;x<W;x+=180)c.fillText('0 1 0 1 1',x+20,y);c.globalAlpha=1;
- c.drawImage(bg,0,0,W,H);
- rr(c,40,36,1000,1364,34,'rgba(10,22,14,.6)','rgba(217,164,65,.55)');
- c.textAlign='center';c.fillStyle='#e3a93f';c.font='700 72px "Cormorant Garamond",Georgia,serif';c.fillText('My Soft Skills Garden',540,118);
- c.fillStyle='#f6eedb';fit(c,name,880,32,'600','Inter, Arial');c.fillText(name,540,166);
- c.fillStyle='#b4c2ac';fit(c,cu,880,22,'500','Inter, Arial');c.fillText(cu,540,198);
- c.save();c.beginPath();c.roundRect(80,222,920,520,26);c.clip();c.drawImage(gd,80,222,920,520);c.restore();rr(c,80,222,920,520,26,null,'rgba(217,164,65,.6)');
- c.textAlign='left';c.fillStyle='#f6eedb';c.font='700 19px Inter, Arial';c.letterSpacing='5px';c.fillText('SKILLS IN YOUR GARDEN',84,800);c.letterSpacing='0px';
- c.textAlign='right';c.fillStyle='#e3a93f';c.font='700 50px "Cormorant Garamond",Georgia,serif';c.fillText(score+' of 5',1000,806);
- SK.forEach((k,i)=>{const x=80+(i%2)*472,y=826+Math.floor(i/2)*110,st=res[k.id];
-  rr(c,x,y,448,98,22,'#f6eedb');c.beginPath();c.arc(x+48,y+49,26,0,7);c.fillStyle=st==='ok'?k.col:'#2a3b2b';c.fill();c.lineWidth=4;c.strokeStyle='#14241a';c.stroke();
-  c.textAlign='left';c.font='700 17px Inter, Arial';c.fillStyle=k.col==='#f1c453'?'#b9791c':k.col;c.fillText(k.name,x+92,y+30);
-  const w=c.measureText(k.name).width;c.font='600 14px Inter, Arial';c.fillStyle=st==='ok'?'#2f8f4e':'#d9732a';c.fillText((st==='ok'?'  ✓ bloomed':st==='miss'?'  ✗ missed':'  – not reached'),x+92+w,y+30);
-  c.font='italic 600 20px "Cormorant Garamond",Georgia,serif';c.fillStyle='#24402f';wrap(c,'“'+k.tag+'”',x+92,y+57,336,22,2)});
- rr(c,80,1186,920,66,16,'rgba(0,0,0,.25)','rgba(243,210,122,.6)',[8,6]);c.textAlign='center';c.fillStyle='#f3d27a';c.font='700 21px Inter, Arial';c.fillText('Challenges answered: '+answered+' / 5   ·   Time left: '+ts(remaining),540,1227);
- rr(c,80,1274,920,110,24,'rgba(5,12,8,.8)','rgba(217,164,65,.6)');c.fillStyle='#f6eedb';c.font='italic 700 48px "Cormorant Garamond",Georgia,serif';c.fillText('Every skill grows with practice.',540,1332);
- c.fillStyle='#e3a93f';c.font='700 13px Inter, Arial';c.letterSpacing='5px';c.fillText('YOUR LESSON TO TAKE HOME',540,1364);c.letterSpacing='0px';
- c.fillStyle='#d9a441';c.font='600 54px "Cormorant Garamond",Georgia,serif';c.fillText('Three Years In, Three Years Forward',540,1463);
- c.fillStyle='#8a9b84';c.font='18px Inter, Arial';c.fillText('Office of the Vice President for Digital Transformation, University of the Philippines',540,1503);
+ const cv=document.createElement('canvas');cv.width=1600;cv.height=1000;const c=cv.getContext('2d');
+ c.fillStyle='#1b2a1b';c.fillRect(0,0,1600,1000);
+ const bg=c.createRadialGradient(800,300,50,800,500,800);bg.addColorStop(0,'#2d4429');bg.addColorStop(1,'#1b2a1b');c.fillStyle=bg;c.fillRect(0,0,1600,1000);
+ rr(c,100,70,1400,860,44,'rgba(10,20,10,.35)','rgba(227,169,63,.45)');
+ [[190,150],[1420,190],[240,820],[1380,790],[800,125]].forEach(([x,y])=>{c.fillStyle='rgba(243,210,122,.9)';c.shadowColor='#f3d27a';c.shadowBlur=22;c.beginPath();c.arc(x,y,5,0,7);c.fill()});c.shadowBlur=0;
+ c.textAlign='center';c.fillStyle='#e3a93f';c.font='600 22px Inter,Arial';c.fillText('G A M E   0 2   ·   S O F T   S K I L L S   D E V E L O P M E N T',800,160);
+ const g=c.createLinearGradient(0,190,0,280);g.addColorStop(0,'#f3c35c');g.addColorStop(1,'#d4912c');c.fillStyle=g;c.font='italic 700 78px Georgia,serif';c.fillText('The Soft Skills Studio',800,270);
+ c.fillStyle='#a9b9a0';c.font='28px Inter,Arial';c.fillText(name,800,322);c.textAlign='left';
+ rr(c,160,370,1280,150,26,'#f6eedb');
+ c.fillStyle='#7b5a1c';c.font='600 20px Inter,Arial';c.fillText('SOFT SKILLS UNLOCKED',200,420);
+ c.fillStyle='#b9791c';c.font='700 84px Georgia,serif';c.fillText(score+' / 5',200,495);
+ const EM={communication:'💬',empathy:'💗',collaboration:'🤝',adaptability:'🔄','problem-solving':'🧩'};
+ SK.forEach((k,i)=>{const x=830+i*118,y=405,on=unlocked.has(k.id);
+  c.beginPath();c.arc(x+42,y+42,42,0,7);c.fillStyle=on?k.col:'#d9cfb4';c.globalAlpha=on?1:.55;c.fill();c.globalAlpha=1;
+  c.font='40px system-ui,Arial';c.textAlign='center';c.fillText(EM[k.id],x+42,y+57);c.textAlign='left'});
+ [['NAME',name],['CONSTITUENT UNIT',cu],['CHALLENGES ANSWERED',answered+' / 5'],['TIME LEFT',ts(remaining)]].forEach(([l,v],i)=>{
+  const x=160+(i%2)*650,y=550+Math.floor(i/2)*125;rr(c,x,y,630,105,20,'#fffaf0');
+  c.fillStyle='#9a8660';c.font='600 17px Inter,Arial';c.fillText(l,x+24,y+34);
+  c.fillStyle='#24402f';fit(c,v,578,29,'600','Inter,system-ui,Arial');c.fillText(v,x+24,y+78)});
+ c.textAlign='center';c.fillStyle='#e3a93f';c.font='500 34px Georgia,serif';c.fillText('Three Years In, Three Years Forward',800,848);
+ c.fillStyle='#7c8c76';c.font='18px Inter,Arial';c.fillText('Office of the Vice President for Digital Transformation, University of the Philippines',800,886);
  cv.toBlob(b=>{const a=document.createElement('a');a.download='Game2-Soft-Skills-'+(name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'player')+'.png';a.href=URL.createObjectURL(b);a.click();setTimeout(()=>URL.revokeObjectURL(a.href),3000)},'image/png')}
 
 /* ---------- Music (Web Audio, no files) ---------- */
